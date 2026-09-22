@@ -1,0 +1,156 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* ---------------------------------------------------------------------------
+   NaijaGov tokens — the single source of truth.
+   shadcn's variable names are aliased onto these below; no hex is repeated.
+   There is no dark mode, so the generated `.dark` block has been removed.
+--------------------------------------------------------------------------- */
+
+:root {
+  --bg-page: #f4f2ed; /* warm off-white page ground */
+  --bg-surface: #ffffff; /* cards, panels, popovers */
+  --green-900: #1c4a38; /* brand: logo, primary buttons */
+  --green-700: #2a6149; /* primary hover */
+  --green-300: #7e9c8d; /* muted display green — LARGE TEXT ONLY */
+  --green-50: #e4efe8; /* tinted fills, icon tiles */
+  --ink: #1a1a18; /* headings */
+  --ink-muted: #55554f; /* body */
+  --ink-faint: #8a8a82; /* placeholders, hints */
+  --rule: #dcd9d1; /* hairlines, borders */
+  --chrome-dark: #2b2b2b; /* browser mockup frame */
+
+  /* shadcn aliases → NaijaGov tokens */
+  --background: var(--bg-page);
+  --foreground: var(--ink);
+  --card: var(--bg-surface);
+  --card-foreground: var(--ink);
+  --popover: var(--bg-surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--green-900);
+  --primary-foreground: var(--bg-surface);
+  --secondary: var(--green-50);
+  --secondary-foreground: var(--green-900);
+  --muted: var(--green-50);
+  --muted-foreground: var(--ink-muted);
+  --accent: var(--green-50);
+  --accent-foreground: var(--green-900);
+  --border: var(--rule);
+  --input: var(--rule);
+  --ring: var(--green-900);
+
+  --radius: 6px;
+}
+
+@theme inline {
+  /* Tailwind ships a green palette; clear it so only brand greens resolve. */
+  --color-green-*: initial;
+
+  --color-bg-page: var(--bg-page);
+  --color-bg-surface: var(--bg-surface);
+  --color-green-900: var(--green-900);
+  --color-green-700: var(--green-700);
+  --color-green-300: var(--green-300);
+  --color-green-50: var(--green-50);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-chrome-dark: var(--chrome-dark);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* 4px inputs, 6px buttons and cards, 10px large surfaces */
+  --radius-sm: 4px;
+  --radius-md: var(--radius);
+  --radius-lg: 10px;
+
+  /* Project breakpoints, not Tailwind's defaults */
+  --breakpoint-stack: 1000px;
+  --breakpoint-nav: 900px;
+  --breakpoint-narrow: 600px;
+
+  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-sans);
+
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1;
+  --text-eyebrow--letter-spacing: 0.12em;
+  --text-eyebrow--font-weight: 500;
+
+  /* Collapsible panel height, measured by Radix. Capped at 200ms. */
+  --animate-collapsible-down: collapsible-down 200ms ease-out;
+  --animate-collapsible-up: collapsible-up 200ms ease-out;
+
+  @keyframes collapsible-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-collapsible-content-height);
+    }
+  }
+
+  @keyframes collapsible-up {
+    from {
+      height: var(--radix-collapsible-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    font-family: var(--font-sans);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  /* Display type is tight and dense. */
+  h1,
+  h2,
+  h3 {
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+  }
+}
+
+/* Motion is sparse by design; under this preference it stops entirely,
+   while the end state of a toggle still applies instantly. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
