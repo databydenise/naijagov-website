@@ -60,6 +60,33 @@ c0 -65 -3 -122 -7 -125 -3 -3 -6 9 -7 28 0 19 -2 84 -4 144 -3 82 -1 105 7 91
 44 -7 13 -24 24 -10 25 30 1 29 4 33 21 29 11 -3 28 -12 38 -20z`
 
 /**
+ * The mark alone, with no link around it. Separated out because the hero's
+ * portal mockup draws the panel's logo inside an aria-hidden, unfocusable
+ * subtree, where the lockup's anchor would be both a stray tab stop and a
+ * link hidden from assistive tech.
+ */
+function LogoMark({ size = "md", className }: Omit<LogoProps, "wordmark">) {
+  return (
+    <svg
+      viewBox="0 0 1224 1224"
+      aria-hidden="true"
+      focusable="false"
+      className={cn("shrink-0", markSize[size], className)}
+    >
+      {/* Backs the cut-out so the N reads white on any surface. */}
+      <rect width="1224" height="1224" fill="var(--bg-surface)" />
+      <g
+        transform="translate(0,1224) scale(0.1,-0.1)"
+        fill="currentColor"
+        stroke="none"
+      >
+        <path d={MARK_PATH} />
+      </g>
+    </svg>
+  )
+}
+
+/**
  * The lockup: one link home. The mark is hidden from assistive tech, which
  * reads the link's label instead.
  */
@@ -73,22 +100,7 @@ function Logo({ size = "md", wordmark = true, className }: LogoProps) {
         className
       )}
     >
-      <svg
-        viewBox="0 0 1224 1224"
-        aria-hidden="true"
-        focusable="false"
-        className={cn("shrink-0", markSize[size])}
-      >
-        {/* Backs the cut-out so the N reads white on any surface. */}
-        <rect width="1224" height="1224" fill="var(--bg-surface)" />
-        <g
-          transform="translate(0,1224) scale(0.1,-0.1)"
-          fill="currentColor"
-          stroke="none"
-        >
-          <path d={MARK_PATH} />
-        </g>
-      </svg>
+      <LogoMark size={size} />
       {wordmark && (
         <span className={cn("font-bold tracking-[-0.01em]", wordmarkSize[size])}>
           NaijaGov
@@ -98,5 +110,5 @@ function Logo({ size = "md", wordmark = true, className }: LogoProps) {
   )
 }
 
-export { Logo }
+export { Logo, LogoMark }
 export type { LogoProps }
