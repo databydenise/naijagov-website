@@ -48,7 +48,7 @@ function PortalForm() {
             <div className="flex items-center gap-1.5">
               <div
                 className={
-                  "flex size-[26px] shrink-0 items-center justify-center rounded-full text-[12px] font-bold " +
+                  "flex size-6.5 shrink-0 items-center justify-center rounded-full text-[12px] font-bold " +
                   (step.current
                     ? "bg-green-900 text-bg-surface"
                     : "bg-mock-step text-ink-muted")

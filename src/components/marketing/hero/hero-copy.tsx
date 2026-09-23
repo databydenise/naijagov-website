@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { ArrowRight } from "@/components/ui/icons";
 import { PlayLink } from "@/components/ui/play-link";
-import { GET_EXTENSION_HREF } from "@/components/layout/nav-links";
-
-/** Until the video exists, the link is a placeholder in one known place. */
-const WATCH_VIDEO_HREF = "#";
+import {
+  GET_EXTENSION_HREF,
+  WATCH_VIDEO_HREF,
+} from "@/components/layout/nav-links";
 
 function HeroCopy() {
   return (
