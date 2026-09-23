@@ -7,3 +7,6 @@ export const INSTALL_LINKS = [
 
 /** Where the primary call to action goes until the extension itself exists. */
 export const GET_EXTENSION_HREF = "/install"
+
+/** Placeholder until the video exists — the hero and "How It Works" share it. */
+export const WATCH_VIDEO_HREF = "#"

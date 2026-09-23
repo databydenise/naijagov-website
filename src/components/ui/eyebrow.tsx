@@ -16,7 +16,7 @@ function Eyebrow({ as: Comp = "p", className, ...props }: EyebrowProps) {
     <Comp
       data-slot="eyebrow"
       className={cn(
-        "text-eyebrow text-ink-muted uppercase font-medium",
+        "text-eyebrow tracking-wider text-ink-muted uppercase font-medium",
         className
       )}
       {...props}

@@ -145,6 +145,13 @@
     color: var(--color-foreground);
   }
 
+  /* lucide draws at stroke-width 2; the design calls for 1.5 everywhere. It is
+     a presentation attribute, so one rule here beats it without every call
+     site having to pass strokeWidth. Hand-drawn SVGs set their own. */
+  svg.lucide {
+    stroke-width: 1.5;
+  }
+
   /* Display type is tight and dense. */
   h1,
   h2,
