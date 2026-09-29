@@ -21,6 +21,10 @@ export {
   CircleQuestionMark as HelpCircle,
   Settings,
   Play,
+  IdCard,
+  History,
+  Sparkles,
+  LogOut,
 } from "lucide-react"
 
 export type { LucideIcon as Icon } from "lucide-react"

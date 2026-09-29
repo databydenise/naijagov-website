@@ -4,7 +4,7 @@ import Link from "next/link"
 import { Container } from "@/components/ui/container"
 import { Separator } from "@/components/ui/separator"
 import { useSession } from "@/lib/auth/session-context"
-import { INSTALL_LINKS } from "./nav-links"
+import { DEMO_ENTRY_HREF, INSTALL_LINKS } from "./nav-links"
 
 interface MobileNavPanelProps {
   /** Closes the panel — selecting anything in it dismisses it. */
@@ -49,10 +49,10 @@ function MobileNavPanel({ onNavigate }: MobileNavPanelProps) {
             </Link>
           ) : (
             <>
-              <Link href="/login" onClick={onNavigate} className={itemClass}>
+              <Link href={DEMO_ENTRY_HREF} onClick={onNavigate} className={itemClass}>
                 Log in
               </Link>
-              <Link href="/signup" onClick={onNavigate} className={itemClass}>
+              <Link href={DEMO_ENTRY_HREF} onClick={onNavigate} className={itemClass}>
                 Sign up
               </Link>
             </>
