@@ -11,6 +11,9 @@ export interface User {
 
 interface SessionValue {
   user: User | null
+  /** Starts the mock session. A no-op when already signed in. */
+  signIn: () => void
+  signOut: () => void
   /** Dev-only switch between the signed-out and signed-in mock. */
   toggleSession: () => void
 }
@@ -30,12 +33,22 @@ function SessionProvider({ children }: SessionProviderProps) {
   // Signed out is the default state.
   const [user, setUser] = useState<User | null>(null)
 
+  const signIn = () => {
+    setUser((current) => current ?? mockUser)
+  }
+
+  const signOut = () => {
+    setUser(null)
+  }
+
   const toggleSession = () => {
     setUser((current) => (current ? null : mockUser))
   }
 
   return (
-    <SessionContext value={{ user, toggleSession }}>{children}</SessionContext>
+    <SessionContext value={{ user, signIn, signOut, toggleSession }}>
+      {children}
+    </SessionContext>
   )
 }
 

@@ -23,7 +23,7 @@ import { Separator } from "@/components/ui/separator";
 import { useSession } from "@/lib/auth/session-context";
 import { getInitials } from "@/lib/utils";
 import { MobileNavPanel } from "./mobile-nav-panel";
-import { GET_EXTENSION_HREF, INSTALL_LINKS } from "./nav-links";
+import { DEMO_ENTRY_HREF, GET_EXTENSION_HREF, INSTALL_LINKS } from "./nav-links";
 
 function InstallMenu() {
   return (
@@ -72,10 +72,10 @@ function AuthSlot() {
   return (
     <div className="flex items-center gap-1">
       <Button variant="ghost" size="sm" asChild>
-        <Link href="/login">Log in</Link>
+        <Link href={DEMO_ENTRY_HREF}>Log in</Link>
       </Button>
       <Button variant="secondary" size="sm" asChild className="rounded-sm py-2">
-        <Link href="/signup">Sign up</Link>
+        <Link href={DEMO_ENTRY_HREF}>Sign up</Link>
       </Button>
     </div>
   );
