@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NaijaGov Web
 
-## Getting Started
+The frontend web app for NaijaGov: a marketing landing page plus a signed-in
+user area. This repo is presentation-layer only — no backend, no real
+authentication, no extension code. See [CLAUDE.md](CLAUDE.md) for the full
+scope and conventions.
 
-First, run the development server:
+## Prerequisites
+
+- **Node 20.9 or newer** (required by Next.js 16). Check with `node -v`.
+- **npm** (the project is set up with an `npm` lockfile — don't mix in yarn/pnpm/bun).
+
+## Setup
 
 ```bash
+git clone <this-repo-url>
+cd Web-client
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). The landing page is
+served from `src/app/page.tsx`, and edits hot-reload.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+There is no `.env` to configure and nothing to seed — all data is mocked in
+`src/mocks/` and served through `src/lib/api/`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Seeing the signed-in area
 
-## Learn More
+Auth is simulated: a mock session in React context, with no real login. In
+development, a **dev: signed in / signed out** toggle floats in the bottom-left
+corner of every page (it does not render in production builds) — use it to
+flip into the signed-in state and reach `/app/profile`, `/app/information`,
+`/app/activity`, and `/app/settings`.
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run dev        # next dev — local development server
+npm run build      # next build — production build, typechecks as part of it
+npm run start      # serve the production build (run `build` first)
+npm run lint       # eslint (flat config, eslint-config-next)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+There is no `npm run test` script yet; see the note on the test stack in
+[CLAUDE.md](CLAUDE.md#stack).
 
-## Deploy on Vercel
+## Project structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See the [Structure](CLAUDE.md#structure) section of `CLAUDE.md` for the
+directory layout, routing conventions, and where things belong.

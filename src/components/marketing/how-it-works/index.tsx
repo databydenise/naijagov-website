@@ -46,6 +46,7 @@ function HowItWorks() {
           <PlayLink
             href={WATCH_VIDEO_HREF}
             className="nav:mt-15 nav:self-start"
+            tooltip="The video is attached to the submission link."
           >
             Watch Video
           </PlayLink>

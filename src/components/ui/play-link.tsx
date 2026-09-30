@@ -1,11 +1,18 @@
 import Link from "next/link";
 import { cn } from "cn";
 import { Play } from "@/components/ui/icons";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface PlayLinkProps {
   href: string;
   children: React.ReactNode;
   className?: string;
+  /** Shown on hover/focus — there is no video route to explain otherwise. */
+  tooltip?: string;
 }
 
 /**
@@ -13,8 +20,8 @@ interface PlayLinkProps {
  * so the whole lockup is a single tab stop and the ring wraps both parts.
  * The circle and label are siblings inside the anchor, not nested controls.
  */
-function PlayLink({ href, children, className }: PlayLinkProps) {
-  return (
+function PlayLink({ href, children, className, tooltip }: PlayLinkProps) {
+  const link = (
     <Link
       href={href}
       className={cn(
@@ -33,6 +40,15 @@ function PlayLink({ href, children, className }: PlayLinkProps) {
         {children}
       </span>
     </Link>
+  );
+
+  if (!tooltip) return link;
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>{link}</TooltipTrigger>
+      <TooltipContent sideOffset={8}>{tooltip}</TooltipContent>
+    </Tooltip>
   );
 }
 

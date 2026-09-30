@@ -56,6 +56,7 @@ function HeroCopy() {
         <PlayLink
           href={WATCH_VIDEO_HREF}
           className="self-center narrow:self-auto"
+          tooltip="The video is attached to the submission link."
         >
           Watch Video
         </PlayLink>
