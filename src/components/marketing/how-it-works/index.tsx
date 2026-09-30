@@ -19,7 +19,10 @@ import { STEPS } from "./steps";
  */
 function HowItWorks() {
   return (
-    <section className="border-b border-rule bg-bg-page py-9 stack:py-18">
+    <section
+      id="how-it-works"
+      className="scroll-mt-18 border-b border-rule bg-bg-page py-9 stack:py-18"
+    >
       <Container>
         <Eyebrow as="h2">How it works</Eyebrow>
 
